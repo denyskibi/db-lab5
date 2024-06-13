@@ -14,9 +14,12 @@ class MySQLTables:
         self.transaction = Transaction(mysql_handler)
 
     def create_tables(self) -> None:
-        pass
+        # !! Tables should be created in the appropriate order according to their dependencies !!
+        self._create_parking_table()
+        self._create_parking_table()
+        self._create_transaction_table()
 
-    def create_parking_table(self) -> None:
+    def _create_parking_table(self) -> None:
         create_table_query = (
             f"CREATE TABLE IF NOT EXIST {TableNames.PARKING} "
             f"parking_id INT AUTO_INCREMENT PRIMARY KEY, "
@@ -31,7 +34,7 @@ class MySQLTables:
             cursor.execute(create_table_query)
             connection.commit()
 
-    def create_client_table(self) -> None:
+    def _create_client_table(self) -> None:
         create_table_query = (
             f"CREATE TABLE IF NOT EXIST {TableNames.CLIENT} "
             f"client_id INT AUTO_INCREMENT PRIMARY KEY, "
@@ -46,7 +49,7 @@ class MySQLTables:
             cursor.execute(create_table_query)
             connection.commit()
 
-    def create_transaction_table(self) -> None:
+    def _create_transaction_table(self) -> None:
         create_table_query = (
             f"CREATE TABLE IF NOT EXIST {TableNames.TRANSACTION} "
             f"transaction_id INT AUTO_INCREMENT PRIMARY KEY, "

@@ -7,6 +7,7 @@ from loguru import logger
 # Custom Modules
 from configuration import project_loader
 from database.mysql_handler import MySQLHandler
+from database.mysql_tables import MySQLTables
 
 
 def init():
@@ -31,6 +32,7 @@ def stop():
 def main() -> None:
     # Create necessary class instances
     mysql_handler = MySQLHandler()
+    mysql_tables = MySQLTables(mysql_handler)
 
     try:
         # Step #1: Initialize project
@@ -40,7 +42,7 @@ def main() -> None:
         mysql_handler.establish_connection_pool()
 
         # Step #3: Initialize MySQL database
-        ...
+        mysql_tables.create_tables()
     except KeyboardInterrupt:
         logger.error(f'Failed: script interrupted by user (CTRL + C)')
         stop()
