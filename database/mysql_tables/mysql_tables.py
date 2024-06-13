@@ -30,3 +30,23 @@ class MySQLTables:
             cursor = connection.cursor()
             cursor.execute(create_table_query)
             connection.commit()
+
+    def create_client_table(self) -> None:
+        create_table_query = (
+            f"CREATE TABLE IF NOT EXIST {TableNames.CLIENT} "
+            f"client_id INT AUTO_INCREMENT PRIMARY KEY, "
+            f"name VARCHAR(255), "
+            f"surname VARCHAR(255), "
+            f"number INT, "
+            f"mail VARCHAR(255) NOT NULL"
+        )
+
+        with self._mysql_handler.get_pool_connection() as connection:
+            cursor = connection.cursor()
+            cursor.execute(create_table_query)
+            connection.commit()
+
+    def create_transaction_table(self) -> None:
+        create_table_query = (
+            ""
+        )
