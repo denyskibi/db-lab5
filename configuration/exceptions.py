@@ -1,4 +1,4 @@
 # configuration/exceptions.py
 
-class CredentialError(Exception):
+class DatabaseCredentialsError(Exception):
     pass
