@@ -22,7 +22,7 @@ class MySQLTables:
             f"parking_id INT AUTO_INCREMENT PRIMARY KEY, "
             f"slot_number INT NOT NULL, "
             f"slot_status ENUM('free', 'taken') DEFAULT 'free', "
-            f"cost DECIMAL(2, 2), "  # number with 2 digits & 2 digits after come
+            f"cost DECIMAL(2, 2), "  # 00.00
             f"address VARCHAR(255) NOT NULL"
         )
 
@@ -48,5 +48,17 @@ class MySQLTables:
 
     def create_transaction_table(self) -> None:
         create_table_query = (
-            ""
+            f"CREATE TABLE IF NOT EXIST {TableNames.TRANSACTION} "
+            f"transaction_id INT AUTO_INCREMENT PRIMARY KEY, "
+            f"client_id INT NOT NULL, "
+            f"parking_id INT NOT NULL, "
+            f"payment DECIMAL(5, 2), "  # 00000.00
+            f"status ENUM('unpaid', 'paid') DEFAULT 'unpaid', "
+            f"FOREIGN KEY (client_id) REFERENCES {TableNames.CLIENT} (client_id), "
+            f"FOREIGN KEY (parking_id) REFERENCES {TableNames.PARKING} (parking_id)"
         )
+
+        with self._mysql_handler.get_pool_connection() as connection:
+            cursor = connection.cursor()
+            cursor.execute(create_table_query)
+            connection.commit()
