@@ -40,7 +40,7 @@ class MySQLTables:
             f"client_id INT AUTO_INCREMENT PRIMARY KEY, "
             f"name VARCHAR(255), "
             f"surname VARCHAR(255), "
-            f"number INT, "
+            f"number INT NOT NULL, "
             f"mail VARCHAR(255) NOT NULL"
         )
 
@@ -53,12 +53,12 @@ class MySQLTables:
         create_table_query = (
             f"CREATE TABLE IF NOT EXIST {TableNames.TRANSACTION} "
             f"transaction_id INT AUTO_INCREMENT PRIMARY KEY, "
-            f"client_id INT NOT NULL, "
             f"parking_id INT NOT NULL, "
+            f"client_id INT NOT NULL, "
             f"payment DECIMAL(5, 2), "  # 00000.00
             f"status ENUM('unpaid', 'paid') DEFAULT 'unpaid', "
-            f"FOREIGN KEY (client_id) REFERENCES {TableNames.CLIENT} (client_id), "
-            f"FOREIGN KEY (parking_id) REFERENCES {TableNames.PARKING} (parking_id)"
+            f"FOREIGN KEY (parking_id) REFERENCES {TableNames.PARKING} (parking_id), "
+            f"FOREIGN KEY (client_id) REFERENCES {TableNames.CLIENT} (client_id)"
         )
 
         with self._mysql_handler.get_pool_connection() as connection:
