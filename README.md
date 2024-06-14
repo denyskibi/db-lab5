@@ -16,9 +16,7 @@ Install project dependencies (run in project root):
 Deploy MySQL database and phpMyAdmin (phpMyAdmin optional, as interface for the database).
 
 Create a database and user for the database
-  - Recommended Database name for production/development: `prod_parking`/`dev_parking`
-  - Recommended Database collation: `utf8mb4_0900_ai_ci`
-  - Required The user must have full access to the database
+  - **Required**: The user must have ALL PRIVILEGES or at least permission level to create and manage a database
 
 Create an `.env` file at the root of the project and fill it with appropriate accesses
 - In the MySQL part, the user must have access to the specified database, the database must already exist
