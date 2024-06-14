@@ -17,12 +17,14 @@ class MySQLTables:
         self.transaction = Transaction(mysql_handler)
 
     def create_tables(self) -> None:
-
+        logger.debug("Initializing database structure, it may take some time, please wait...")
 
         # !! Tables should be created in the appropriate order according to their dependencies !!
         self._create_parking_table()
         self._create_client_table()
         self._create_transaction_table()
+
+        logger.success("Database structure initialized.")
 
     def _create_parking_table(self) -> None:
         create_table_query = (

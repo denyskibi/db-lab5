@@ -19,8 +19,11 @@ class MySQLHandler:
         self._connection_pool: Optional[MySQLConnectionPool] = None
 
     def establish_connection_pool(self) -> None:
+        logger.debug("Establishing connection pool with database, it may take some time, please wait...")
+
         if self._connection_pool is None:
-            self._connection_pool = self._create_connection_pool(pool_name="monday-marketplace")
+            self._connection_pool = self._create_connection_pool(pool_name="parking")
+            logger.success("MySQL connection pool established.")
         else:
             logger.warning(
                 "Connection pool already established, new pool will not be created."
