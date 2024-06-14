@@ -44,6 +44,8 @@ def main() -> None:
         mysql_handler.establish_connection_pool()
 
         # Step #3: Initialize MySQL database
+        mysql_tables.create_database()
+        # mysql_tables.use_database()
         mysql_tables.create_tables()
 
         # Step #4: Call method to insert example data

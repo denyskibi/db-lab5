@@ -16,6 +16,22 @@ class MySQLTables:
         self.client = Client(mysql_handler)
         self.transaction = Transaction(mysql_handler)
 
+    def create_database(self) -> None:
+        logger.info(f"Creating database '{TableNames.DATABASE}', it may take some time...")
+
+        create_database_query = (
+            f"CREATE DATABASE IF NOT EXISTS {TableNames.DATABASE} "
+            f"CHARACTER SET utf8mb4 "
+            f"COLLATE utf8mb4_0900_ai_ci;"
+        )
+
+        with self._mysql_handler.get_pool_connection() as connection:
+            cursor = connection.cursor()
+            cursor.execute(create_database_query)
+            connection.commit()
+
+        logger.success(f"Database {TableNames.DATABASE} created!")
+
     def create_tables(self) -> None:
         logger.debug("Initializing database structure, it may take some time, please wait...")
 
