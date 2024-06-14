@@ -12,7 +12,8 @@ class Transaction:
 
     def add_transaction(self, parking_id: int, client_id: int, payment: float, status: Literal['unpaid', 'paid']) -> None:
         sql_query = (
-            f"INSERT INTO {TableNames.TRANSACTION} (parking_id, client_id, payment, status)"
+            f"INSERT INTO {TableNames.TRANSACTION} (parking_id, client_id, payment, status) "
+            f"VALUES (%s, %s, %s, %s)"
         )
 
         with self._mysql_handler.get_pool_connection() as connection:

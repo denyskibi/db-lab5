@@ -1,4 +1,4 @@
 class TableNames:
     PARKING = "Parking"
-    CLIENT = "CLIENT"
-    TRANSACTION = "TRANSACTION"
+    CLIENT = "Client"
+    TRANSACTION = "Transaction"

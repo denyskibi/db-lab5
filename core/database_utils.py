@@ -11,9 +11,9 @@ class DatabaseUtils:
         self._mysql_tables.client.add_client(mail="example2@gmail.com", number=2, name="Yuri", surname="M")
 
     def add_example_parkings(self) -> None:
-        self._mysql_tables.parking.add_parking(slot_number=1, slot_status='taken', cost=20.0, address="вул. Мазепи, 3")
-        self._mysql_tables.parking.add_parking(slot_number=2, slot_status='taken', cost=30.0, address="вул. Більцька, 27")
+        self._mysql_tables.parking.add_parking(slot_number=1, slot_status='taken', cost=20, address="вул. Мазепи, 3")
+        self._mysql_tables.parking.add_parking(slot_number=2, slot_status='taken', cost=30, address="вул. Більцька, 27")
 
     def add_example_transactions(self) -> None:
-        self._mysql_tables.transaction.add_transaction(parking_id=1, client_id=1, payment=25.3, status='unpaid')
-        self._mysql_tables.transaction.add_transaction(parking_id=1, client_id=2, payment=150.0, status='paid')
+        self._mysql_tables.transaction.add_transaction(parking_id=1, client_id=1, payment=25, status='unpaid')
+        self._mysql_tables.transaction.add_transaction(parking_id=1, client_id=2, payment=150, status='paid')

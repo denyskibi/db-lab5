@@ -12,7 +12,7 @@ class Parking:
 
     def add_parking(self, slot_number: int, slot_status: Literal['free', 'taken'], cost: float, address: str) -> None:
         sql_query = (
-            f"INSERT INTO {TableNames.CLIENT} (slot_number, slot_status, cost, address) "
+            f"INSERT INTO {TableNames.PARKING} (slot_number, slot_status, cost, address) "
             f"VALUES(%s, %s, %s, %s)"
         )
 
