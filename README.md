@@ -1,4 +1,4 @@
-# Database - Lab #4
+# Database - Lab #5
 Python script to deploy a database for parking management
 
 # Getting started / Prerequisites
