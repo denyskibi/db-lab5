@@ -17,7 +17,7 @@ class DatabaseUtils:
 
     def add_example_parkings(self) -> None:
         self._mysql_tables.parking.add_parking(slot_number=1, slot_status='taken', cost=20, address="вул. Мазепи, 3")
-        self._mysql_tables.parking.add_parking(slot_number=2, slot_status='taken', cost=30, address="вул. Більцька, 27")
+        self._mysql_tables.parking.add_parking(slot_number=2, slot_status='taken', cost=30, address="вул. Білецька, 27")
 
         logger.info("Added two example parkings into database.")
 
