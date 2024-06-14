@@ -8,6 +8,7 @@ from loguru import logger
 from configuration import project_loader
 from database.mysql_handler import MySQLHandler
 from database.mysql_tables import MySQLTables
+from core.database_utils import DatabaseUtils
 
 
 def init():
@@ -33,6 +34,7 @@ def main() -> None:
     # Create necessary class instances
     mysql_handler = MySQLHandler()
     mysql_tables = MySQLTables(mysql_handler)
+    database_utils = DatabaseUtils(mysql_tables)
 
     try:
         # Step #1: Initialize project
@@ -43,6 +45,11 @@ def main() -> None:
 
         # Step #3: Initialize MySQL database
         mysql_tables.create_tables()
+
+        # Step #4: Call method to insert example data
+        database_utils.add_example_parkings()  # add two example parkings
+        database_utils.add_example_clients()  # add two example clients
+        database_utils.add_example_transactions()  # add two example transactions
     except KeyboardInterrupt:
         logger.error(f"Failed: script interrupted by user (CTRL + C)")
         stop()
