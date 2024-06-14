@@ -16,7 +16,7 @@ Install project dependencies (run in project root):
 Deploy MySQL database and phpMyAdmin (phpMyAdmin optional, as interface for the database).
 
 Create a database and user for the database
-  - Recommended Database name for production/development: `prod_parsking`/`dev_parsking`
+  - Recommended Database name for production/development: `prod_parking`/`dev_parking`
   - Recommended Database collation: `utf8mb4_0900_ai_ci`
   - Required The user must have full access to the database
 

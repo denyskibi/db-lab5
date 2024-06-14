@@ -55,3 +55,6 @@ Thumbs.db
 
 # Project Files
 dev_temp
+
+# Sensitive Data / Credentials
+*.env
