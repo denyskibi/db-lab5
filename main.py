@@ -17,7 +17,7 @@ def init():
     #   DEBUG - you will see all messages including debug (good for dev runs, debug, running in background on server)
     #   INFO - you will see only the main info during project workflow (good for functional runs)
     logger.remove()  # reset current logger
-    logger.add(sys.stderr, level="INFO")  # create new logger & set log level
+    logger.add(sys.stderr, level='INFO')  # create new logger & set log level
 
     # Step #1: Load and check project envies
     project_loader.load_and_check_envies()
@@ -44,12 +44,12 @@ def main() -> None:
         # Step #3: Initialize MySQL database
         mysql_tables.create_tables()
     except KeyboardInterrupt:
-        logger.error(f'Failed: script interrupted by user (CTRL + C)')
+        logger.error(f"Failed: script interrupted by user (CTRL + C)")
         stop()
     except Exception as e:
-        logger.exception(f'Failed due to unexpected error: {e}', e)
+        logger.exception(f"Failed due to unexpected error: {e}", e)
     else:
-        logger.success('Script finished without any critical errors.')
+        logger.success("Script finished without any critical errors.")
 
 
 if __name__ == '__main__':
