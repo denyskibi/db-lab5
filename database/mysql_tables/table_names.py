@@ -1,5 +1,5 @@
 class TableNames:
-    DATABASE = "uni_dev_parking"
+    DATABASE = "parking-db"
     PARKING = f"{DATABASE}.Parking"
     CLIENT = f"{DATABASE}.Client"
     TRANSACTION = f"{DATABASE}.Transaction"
