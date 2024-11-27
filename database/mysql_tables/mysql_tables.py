@@ -21,7 +21,7 @@ class MySQLTables:
 
         create_database_query = (
             f"CREATE DATABASE IF NOT EXISTS {TableNames.DATABASE} "
-            f"CHARACTER SET utf8mb4 "
+            f"CHARACTER SET utf8mb4_0900_ai_ci "
             f"COLLATE utf8mb4_0900_ai_ci;"
         )
 
